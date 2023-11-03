@@ -11,7 +11,9 @@ int check_cycle(listint_t *head)
 {
 	listint_t *slow, *fast;
 
-	if (!head | !head->next)
+	if (!head)
+		return (0);
+	if (!head->next)
 		return (0);
 
 	for (slow = head, fast = head->next; fast->next && fast->next->next; )
@@ -21,6 +23,5 @@ int check_cycle(listint_t *head)
 		slow = slow->next;
 		fast = fast->next->next;
 	}
-
 	return (0);
 }
