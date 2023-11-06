@@ -31,13 +31,13 @@ listint_t *insert_node(listint_t **head, int number)
 
 	for (current = *head; current->n < number; current = current->next)
 	{
-		if (!current->next) /* if no more nodes. put node after current */
+		if (!current->next) /* if no more nodes. put new after current */
 		{
 			current->next = new;
 			return (new);
 		}
 		/* There is a node that's greater than new.. put new in between */
-		if (current->next->n > number)
+		if (current->next->n >= number)
 		{
 			tmp = current->next;
 			current->next = new;
