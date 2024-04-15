@@ -8,6 +8,8 @@ if __name__ == '__main__':
     if count == 0:
         print('.')
     else:
-        print('s:')
+        if count != 1:
+            print('s', end='')
+        print(':')
         for i, arg in enumerate(sys.argv[1:]):
             print(f'{i}: {arg}')
