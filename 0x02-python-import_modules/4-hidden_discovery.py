@@ -2,8 +2,8 @@
 
 if __name__ == '__main__':
     # Get the defined names
-    import add_0
-    names = dir(add_0)
+    import hidden_4
+    names = dir(hidden_4)
     
     # remove the names that start with __
     for name in names:
