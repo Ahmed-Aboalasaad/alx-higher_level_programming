@@ -1,2 +1,3 @@
 #!/usr/bin/python3
-print(*map(chr, range(65, 91)), sep='')
+from functools import reduce
+print(reduce(lambda x, y: x + y, list(map(chr, range(65, 91)))))
