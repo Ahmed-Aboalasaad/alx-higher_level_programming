@@ -9,37 +9,35 @@
 */
 int is_palindrome(listint_t **head)
 {
+	int size = 0, i, j;
+	Stack *s;
+	listint_t *tmp;
+
 	/* input validation */
 	if (!head)
 	{
 		printf("Error: Null pointer to the head pointer");
 		return (0);
 	}
-
 	/* Fill in the stack with the list */
-	int size = 0;
-	Stack *s;
-
 	createStack(&s);
-	for (listint_t *i = *head; i; i = i->next, size++)
+	for (tmp = *head; tmp; tmp = tmp->next, size++)
 	{
-		push(s, i->n);
-		if (!(i->next))
+		push(s, tmp->n);
+		if (!(tmp->next))
 		{
 			size++;
 			break;
 		}
 	}
-
 	/* an empty list & a singleton list are palindromes */
 	if (size == 0 || size == 1)
 	{
 		freeStack(s);
 		return (1);
 	}
-
 	/* Scan the Stack array to decide if it's a palindrome */
-	for (int i = 0, j = size - 1; j > i ; i++, j--)
+	for (i = 0, j = size - 1; j > i ; i++, j--)
 	{
 		if (s->data[i] != s->data[j])
 		{
@@ -120,13 +118,16 @@ void freeStack(Stack *s)
 */
 void expand(Stack *s)
 {
+	int i;
+	int *tmp;
+
 	if (!s)
 	{
 		printf("Received a Null stack pointer while expanding.\n");
 		return;
 	}
 	s->capacity *= 1.5;
-	int *tmp = malloc(sizeof(int) * s->capacity);
+	tmp = malloc(sizeof(int) * s->capacity);
 
 	if (!tmp)
 	{
@@ -134,7 +135,7 @@ void expand(Stack *s)
 		return;
 	}
 
-	for (int i = 0; i < s->count; i++)
+	for (i = 0; i < s->count; i++)
 		tmp[i] = s->data[i];
 	free(s->data);
 	s->data = tmp;
