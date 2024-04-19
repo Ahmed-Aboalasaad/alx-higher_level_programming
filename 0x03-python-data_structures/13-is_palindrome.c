@@ -65,7 +65,7 @@ void createStack(Stack **s)
 		return;
 	}
 
-	(*s)->capacity = 1;
+	(*s)->capacity = 10;
 	(*s)->count = 0;
 	(*s)->data = malloc(sizeof(int) * (*s)->capacity);
 	if (!((*s)->data))
@@ -126,7 +126,7 @@ void expand(Stack *s)
 		printf("Received a Null stack pointer while expanding.\n");
 		return;
 	}
-	s->capacity += 1;
+	s->capacity *= 2;
 	tmp = malloc(sizeof(int) * s->capacity);
 
 	if (!tmp)
