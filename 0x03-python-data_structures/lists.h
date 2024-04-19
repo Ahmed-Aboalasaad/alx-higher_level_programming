@@ -13,14 +13,35 @@
  */
 typedef struct listint_s
 {
-    int n;
-    struct listint_s *next;
+	int n;
+	struct listint_s *next;
 } listint_t;
+
 
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
 
 int is_palindrome(listint_t **head);
+
+/**
+ * struct stack - a stack struct implemented with arrays
+ * @capacity: current capacity of the underlying array
+ * @count: number of elements in the array
+ * @data: the array holding the data
+*/
+typedef struct stack
+{
+	int capacity;
+	int count;
+	int *data;
+} Stack;
+int createStack(Stack **s);
+int push(Stack *s, int x);
+int pop(Stack *s);
+int top(Stack *s);
+int expand(Stack *s);
+void freeStack(Stack *s);
+void printStack(Stack *s);
 
 #endif /* LISTS_H */
