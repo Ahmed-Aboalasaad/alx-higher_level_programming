@@ -33,12 +33,21 @@ int is_palindrome(listint_t **head)
 
 	/* an empty list & a singleton list are palindromes */
 	if (size == 0 || size == 1)
+	{
+		freeStack(s);
 		return (1);
+	}
 
 	/* Scan the Stack array to decide if it's a palindrome */
 	for (int i = 0, j = size - 1; j > i ; i++, j--)
+	{
 		if (s->data[i] != s->data[j])
+		{
+			freeStack(s);
 			return (0);
+		}
+	}
+	freeStack(s);
 	return (1);
 }
 
@@ -84,4 +93,49 @@ void push(Stack *s, int x)
 		expand(s);
 	s->data[s->count] = x;
 	(s->count)++;
+}
+
+/**
+ * freeStack - frees the given stack
+ *
+ * @s: pointer to the stack
+ * Return: nothing
+*/
+void freeStack(Stack *s)
+{
+	if (!s)
+	{
+		printf("Received a Null stack pointer while freeing it\n");
+		return;
+	}
+	free(s->data);
+	free(s);
+}
+
+/**
+ * expand - expands the array of the given stack to 1.5 its capacity
+ *
+ * @s: pointer to the stack
+ * Return: nothing
+*/
+void expand(Stack *s)
+{
+	if (!s)
+	{
+		printf("Received a Null stack pointer while expanding.\n");
+		return;
+	}
+	s->capacity *= 1.5;
+	int *tmp = malloc(sizeof(int) * s->capacity);
+
+	if (!tmp)
+	{
+		printf("No enough memory while expanding the stack array\n");
+		return;
+	}
+
+	for (int i = 0; i < s->count; i++)
+		tmp[i] = s->data[i];
+	free(s->data);
+	s->data = tmp;
 }

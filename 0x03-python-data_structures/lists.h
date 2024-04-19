@@ -21,7 +21,6 @@ typedef struct listint_s
 size_t print_listint(const listint_t *h);
 listint_t *add_nodeint_end(listint_t **head, const int n);
 void free_listint(listint_t *head);
-
 int is_palindrome(listint_t **head);
 
 /**
@@ -36,11 +35,11 @@ typedef struct stack
 	int count;
 	int *data;
 } Stack;
-int createStack(Stack **s);
-int push(Stack *s, int x);
-int pop(Stack *s);
+void createStack(Stack **s);
+void push(Stack *s, int x);
+void pop(Stack *s);
 int top(Stack *s);
-int expand(Stack *s);
+void expand(Stack *s);
 void freeStack(Stack *s);
 void printStack(Stack *s);
 
