@@ -2,7 +2,7 @@
 
 def simple_delete(a_dictionary, key=""):
     'deletes a key in a dictionary.'
-    if (key is "") or (key not in a_dictionary.keys()):
+    if (key == "") or (key not in a_dictionary.keys()):
         return a_dictionary
 
     del a_dictionary[key]
