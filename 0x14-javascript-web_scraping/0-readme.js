@@ -1,4 +1,4 @@
-#!/usr/bin/env node
+#!/usr/bin/node
 // Prints the content of the file whose path is passed as an argument
 
 const fs = require('fs');
